@@ -48,7 +48,7 @@ class TableGenerator implements GeneratorInterface, OutputAwareInterface
         'mem_real' => ['mem'],
         'mem_final' => ['mem'],
         'diff' => ['diff'],
-        'comp_deviation' => ['diff'],
+        'comp_deviation' => ['deviation'],
         'comp_z_value' => ['z-value'],
     ];
 
@@ -144,7 +144,7 @@ class TableGenerator implements GeneratorInterface, OutputAwareInterface
             $min = min($means);
 
             return F\map($table, function ($row) use ($min, $stat) {
-                $row['diff'] = (100 / $row[$stat]) * ($row[$stat] - $min);
+                $row['diff'] = ((($row[$stat]) / ($min)));
 
                 return $row;
             });
